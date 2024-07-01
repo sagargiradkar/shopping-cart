@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import Product from "../components/Product";
-
+import Footer from "./Footer";
 const Home = () => {
   const API_URL = "https://fakestoreapi.com/products";
   const [loading, setLoading] = useState(true);
@@ -38,6 +38,7 @@ const Home = () => {
       ) : (
         <div>No Products Found</div>
       )}
+      <Footer/>
     </div>
   );
 };

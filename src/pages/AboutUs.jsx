@@ -4,8 +4,10 @@ import founder1 from "../assets/founder1.jpg";
 import founder2 from "../assets/founder2.jpg";
 import founder3 from "../assets/founder3.jpg";
 import founder4 from "../assets/founder4.jpg";
+import Footer from './Footer';
 export default function AboutUs() {
     return (
+        <>
         <div className="bg-white text-gray-800 p-6 md:p-12">
             <div className="max-w-4xl mx-auto">
                 {/* <h1 className="text-4xl font-bold text-green-700 mb-4">About Us</h1> */}
@@ -55,6 +57,9 @@ export default function AboutUs() {
                     </div>
                 </div>
             </div>
+            
         </div>
+        <Footer/>
+        </>
     );
 }
