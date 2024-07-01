@@ -15,7 +15,7 @@ export default function AboutUs() {
                     <img src={logo} alt="Company Image" className="w-[320px] h-[320px] object-cover" />
                     <div className="ml-4 flex flex-col">
                         <h1 className="text-green-700 font-bold text-8xl">Poshinda.co</h1>
-                        <div className="text-green-700 font-bold text-4xl">The Pure Essence of Nature & Soil</div>
+                        <div className=" font-bold text-4xl">The Pure Essence of Nature & Soil</div>
                     </div>
                 </div>
 
