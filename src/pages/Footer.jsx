@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
           <div>
             <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-            <p className="mb-2">Walani, Pauni,Bhandara,Maharashtra 441910</p>
+            <p className="mb-2">Walani, Pauni, Bhandara, Maharashtra, 441910.</p>
             <p className="mb-2">Email: info.posinda@gmail.com</p>
             <p className="mb-2">Phone: +91 8080864740</p>
           </div>
