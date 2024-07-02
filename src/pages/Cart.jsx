@@ -56,7 +56,6 @@ const Cart = () => {
           </div>
         ) : (
           <div className="min-h-[80vh] flex flex-col justify-center items-center">
-            <img src="/empty-cart.svg" alt="Empty Cart" className="w-48 h-48 mb-4" />
             <h1 className="text-gray-700 font-semibold text-xl mb-2">
               Your cart is empty!
             </h1>

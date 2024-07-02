@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { FaShoppingCart, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -7,28 +7,54 @@ import logo from "../assets/logo.png";
 const Navbar = () => {
   const { cart } = useSelector((state) => state);
   const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log('Search Query:', searchQuery);
+    setSearchQuery('');
+  };
+
   return (
     <nav className="bg-gray-800 shadow-md">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className=" ml-10 flex items-center">
+          {/* Logo and site title */}
+          <div className="flex items-center">
             <NavLink to="/">
-              <img src={logo} className="h-20" alt="Logo" />
+              <img src={logo} className="h-16 sm:h-20" alt="Logo" />
             </NavLink>
-            <div className="ml-4">
-              <h1 className="text-yellow-300 font-bold text-10xl sm:text-2xl">Poshinda.co</h1>
-              <p className="text-yellow-300 text-sm sm:text-sm">The Pure Essence of Nature & Soil</p>
+            <div className="ml-2 sm:ml-4 flex items-center">
+              <div>
+                <h1 className="text-yellow-300 font-bold text-lg sm:text-2xl">Poshinda.co</h1>
+                <p className="text-yellow-300 text-xs sm:text-sm">The Pure Essence of Nature & Soil</p>
+              </div>
+              {/* Search Box */}
+              <form onSubmit={handleSearch} className="hidden md:flex ml-4">
+                <input
+                  type="text"
+                  placeholder="Search products"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-40 sm:w-60 h-8 sm:h-10 pl-4 pr-8 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+                <button
+                  type="submit"
+                  className="h-8 sm:h-10 w-10 bg-yellow-500 hover:bg-yellow-600 text-white rounded-r-md flex items-center justify-center"
+                >
+                  <FaSearch />
+                </button>
+              </form>
             </div>
           </div>
 
           {/* Hamburger menu button for mobile */}
           <div className="flex items-center">
-            <div className="block sm:hidden">
+            <div className="block md:hidden">
               <button
                 onClick={toggleMenu}
                 type="button"
@@ -38,7 +64,7 @@ const Navbar = () => {
               </button>
             </div>
             {/* Desktop navigation links */}
-            <div className="hidden sm:flex sm:flex-row sm:items-center sm:gap-x-6 sm:mr-6">
+            <div className="hidden md:flex md:flex-row md:items-center md:gap-x-6 md:mr-6">
               <NavLink to="/" className="text-gray-300 hover:text-white transition-all duration-300 ease-in">
                 Home
               </NavLink>
@@ -60,9 +86,26 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile search box */}
+        <form onSubmit={handleSearch} className="flex md:hidden mt-2">
+          <input
+            type="text"
+            placeholder="Search products"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="flex-grow h-8 pl-4 pr-8 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <button
+            type="submit"
+            className="h-8 w-10 bg-yellow-500 hover:bg-yellow-600 text-white rounded-r-md flex items-center justify-center"
+          >
+            <FaSearch />
+          </button>
+        </form>
+
         {/* Mobile menu */}
         {isOpen && (
-          <div className="block sm:hidden">
+          <div className="block md:hidden">
             <div className="mt-2">
               <NavLink
                 to="/"
