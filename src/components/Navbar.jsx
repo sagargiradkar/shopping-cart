@@ -26,8 +26,22 @@ const Navbar = () => {
     <nav className="bg-gray-800 shadow-md">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo and site title */}
+          {/* Left section: Hamburger icon, Logo, company name, and search box */}
           <div className="flex items-center">
+            {/* Hamburger menu button */}
+            <div className="block md:hidden mr-2">
+              <button
+                onClick={toggleMenu}
+                type="button"
+                className="text-gray-400 hover:text-white focus:outline-none"
+              >
+                {isOpen ? (
+                  <FaTimes className="text-2xl" />
+                ) : (
+                  <FaBars className="text-2xl" />
+                )}
+              </button>
+            </div>
             <NavLink to="/">
               <img src={logo} className="h-16 sm:h-20" alt="Logo" />
             </NavLink>
@@ -55,7 +69,7 @@ const Navbar = () => {
                   />
                   <button
                     type="submit"
-                  className="h-8 sm:h-10  w-10 bg-green-600 hover:bg-yellow-400 text-white rounded-r-md flex items-center justify-center"
+                    className="h-8 sm:h-10 w-10 bg-green-600 hover:bg-yellow-400 text-white rounded-r-md flex items-center justify-center"
                   >
                     <FaSearch />
                   </button>
@@ -64,23 +78,9 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Hamburger menu button for mobile */}
+          {/* Right section: Cart icon and desktop navigation links */}
           <div className="flex items-center">
-            <div className="block md:hidden">
-              <button
-                onClick={toggleMenu}
-                type="button"
-                className="text-gray-400 hover:text-white focus:outline-none"
-              >
-                {isOpen ? (
-                  <FaTimes className="text-2xl" />
-                ) : (
-                  <FaBars className="text-2xl" />
-                )}
-              </button>
-            </div>
-            {/* Desktop navigation links */}
-            <div className="hidden md:flex md:flex-row md:items-center md:gap-x-6 md:mr-6">
+            <div className="hidden md:flex md:flex-row md:items-center md:gap-x-6">
               <NavLink
                 to="/"
                 className="text-gray-300 hover:text-white transition-all duration-300 ease-in"
@@ -99,45 +99,22 @@ const Navbar = () => {
               >
                 About Us
               </NavLink>
-              <NavLink
-                to="/cart"
-                className="relative text-gray-300 hover:text-white transition-all duration-300 ease-in"
-              >
-                <FaShoppingCart className="text-2xl" />
-                {cart.length > 0 && (
-                  <span className="absolute -top-1 -right-2 bg-green-600 rounded-full text-xs w-5 h-5 grid place-items-center animate-bounce text-white">
-                    {cart.length}
-                  </span>
-                )}
-              </NavLink>
             </div>
+
+            {/* Cart icon always visible on both mobile and desktop */}
+            <NavLink
+              to="/cart"
+              className="relative text-gray-300 hover:text-white transition-all duration-300 ease-in ml-4 md:ml-6"
+            >
+              <FaShoppingCart className="text-2xl" />
+              {cart.length > 0 && (
+                <span className="absolute -top-1 -right-2 bg-green-600 rounded-full text-xs w-5 h-5 grid place-items-center animate-bounce text-white">
+                  {cart.length}
+                </span>
+              )}
+            </NavLink>
           </div>
         </div>
-
-        {/* Mobile search box */}
-        {isHome && (
-        <form
-        onSubmit={handleSearch}
-        className="flex md:hidden mt-2 items-center"
-      >
-        <input
-          type="text"
-          placeholder="Search products"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="flex-grow h-8 pl-4 pr-8 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
-          style={{ width: "calc(100% - 3rem)" }} // Adjusted width to fit with the button
-        />
-        <button
-          type="submit"
-          className="h-8 w-12 bg-green-600 hover:bg-yellow-400 text-white rounded-r-md flex items-center justify-center mb-2"
-          style={{ minWidth: "3rem" }} // Set a minimum width for the button
-        >
-          <FaSearch />
-        </button>
-      </form>
-      
-        )}
 
         {/* Mobile menu */}
         {isOpen && (
