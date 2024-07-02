@@ -55,7 +55,7 @@ const Navbar = () => {
                   />
                   <button
                     type="submit"
-                  className="h-8 sm:h-10  w-10 bg-yellow-500 hover:bg-yellow-600 text-white rounded-r-md flex items-center justify-center"
+                  className="h-8 sm:h-10  w-10 bg-green-600 hover:bg-yellow-400 text-white rounded-r-md flex items-center justify-center"
                   >
                     <FaSearch />
                   </button>
@@ -129,7 +129,7 @@ const Navbar = () => {
           />
           <button
             type="submit"
-            className="h-8 w-10 mb-1 bg-yellow-500 hover:bg-yellow-600 text-white border-gray-300 rounded-r-md flex items-center justify-center"
+            className="h-8 w-10 mb-1 bg-green-600 hover:bg-yellow-400 text-white border-gray-300 rounded-r-md flex items-center justify-center"
           >
             <FaSearch />
           </button>
