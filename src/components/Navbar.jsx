@@ -51,7 +51,7 @@ const Navbar = () => {
                     placeholder="Search products"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-40 sm:w-60 h-8 sm:h-10 pl-4 pr-8 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-40 sm:w-60 h-8 sm:h-10 pl-4 pr-8 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                   <button
                     type="submit"
@@ -115,25 +115,29 @@ const Navbar = () => {
         </div>
 
         {/* Mobile search box */}
+        {isHome && (
         <form
-          onSubmit={handleSearch}
-          className="flex md:hidden mt-2 items-center"
+        onSubmit={handleSearch}
+        className="flex md:hidden mt-2 items-center"
+      >
+        <input
+          type="text"
+          placeholder="Search products"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="flex-grow h-8 pl-4 pr-8 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
+          style={{ width: "calc(100% - 3rem)" }} // Adjusted width to fit with the button
+        />
+        <button
+          type="submit"
+          className="h-8 w-12 bg-green-600 hover:bg-yellow-400 text-white rounded-r-md flex items-center justify-center mb-2"
+          style={{ minWidth: "3rem" }} // Set a minimum width for the button
         >
-          <input
-            type="text"
-            placeholder="Search products"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-grow h-8 pl-4 pr-8 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            style={{ marginBottom: "5px", width: "150px" }}
-          />
-          <button
-            type="submit"
-            className="h-8 w-10 mb-1 bg-green-600 hover:bg-yellow-400 text-white border-gray-300 rounded-r-md flex items-center justify-center"
-          >
-            <FaSearch />
-          </button>
-        </form>
+          <FaSearch />
+        </button>
+      </form>
+      
+        )}
 
         {/* Mobile menu */}
         {isOpen && (
