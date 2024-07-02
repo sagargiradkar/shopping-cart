@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from './Footer';
 
 export default function Login() {
@@ -72,14 +73,14 @@ export default function Login() {
             <div className="mt-6">
               <div className="flex justify-between">
                 <div className="text-sm">
-                  <a href="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  <Link to="/register" className="font-medium text-indigo-600 hover:text-indigo-500">
                     Don't have an account? Register
-                  </a>
+                  </Link>
                 </div>
                 <div className="text-sm">
-                  <a href="/forgot-password" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  <Link to="/forgot-password" className="font-medium text-indigo-600 hover:text-indigo-500">
                     Forgot your password?
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
