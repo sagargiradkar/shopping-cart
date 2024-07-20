@@ -23,7 +23,7 @@ const Navbar = () => {
   const isHome = location.pathname === "/";
 
   return (
-    <nav className="bg-gray-800 shadow-md">
+    <nav className="bg-gray-800 shadow-md relative">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Left section: Hamburger icon, Logo, company name, and search box */}
@@ -116,46 +116,57 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="block md:hidden">
-            <div className="mt-2">
-              <NavLink
-                to="/"
-                onClick={toggleMenu}
-                className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white transition duration-300 ease-in"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/login"
-                onClick={toggleMenu}
-                className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white transition duration-300 ease-in"
-              >
-                Login
-              </NavLink>
-              <NavLink
-                to="/aboutus"
-                onClick={toggleMenu}
-                className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white transition duration-300 ease-in"
-              >
-                About Us
-              </NavLink>
-              <NavLink
-                to="/cart"
-                onClick={toggleMenu}
-                className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white transition duration-300 ease-in"
-              >
-                Cart{" "}
-                {cart.length > 0 && (
-                  <span className="ml-1 bg-green-600 rounded-full text-xs px-2 py-1 text-white">
-                    {cart.length}
-                  </span>
-                )}
-              </NavLink>
-            </div>
+        {/* Mobile sidebar */}
+        <div
+          className={`fixed top-0 left-0 w-64 h-full bg-gray-800 transform ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 ease-in-out z-50`}
+        >
+          <div className="flex justify-between items-center p-4 border-b border-gray-700">
+            <h2 className="text-yellow-300 text-2xl">Menu</h2>
+            <button
+              onClick={toggleMenu}
+              className="text-gray-400 hover:text-white focus:outline-none"
+            >
+              <FaTimes className="text-2xl" />
+            </button>
           </div>
-        )}
+          <div className="mt-4">
+            <NavLink
+              to="/"
+              onClick={toggleMenu}
+              className="block px-4 py-2 text-gray-300 hover:text-white transition duration-300 ease-in"
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/login"
+              onClick={toggleMenu}
+              className="block px-4 py-2 text-gray-300 hover:text-white transition duration-300 ease-in"
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/aboutus"
+              onClick={toggleMenu}
+              className="block px-4 py-2 text-gray-300 hover:text-white transition duration-300 ease-in"
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to="/cart"
+              onClick={toggleMenu}
+              className="block px-4 py-2 text-gray-300 hover:text-white transition duration-300 ease-in"
+            >
+              Cart{" "}
+              {cart.length > 0 && (
+                <span className="ml-1 bg-green-600 rounded-full text-xs px-2 py-1 text-white">
+                  {cart.length}
+                </span>
+              )}
+            </NavLink>
+          </div>
+        </div>
       </div>
     </nav>
   );
