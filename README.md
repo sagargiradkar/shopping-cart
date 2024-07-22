@@ -64,4 +64,8 @@ Feel free to contribute to the project by opening issues or submitting pull requ
 - Special thanks to the creators of React, Redux, and Tailwind CSS for providing powerful tools to build modern web applications.
 - Inspiration for this project comes from the need for a simple yet effective shopping cart solution using popular front-end technologies.
   
-Happy coding! 🚀
+Happy coding! 
+
+
+🚀
+
